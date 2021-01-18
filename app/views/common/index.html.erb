@@ -1,0 +1,32 @@
+<div class="card-center card w-50">
+  <div class="card-body">
+    <h1 class="text-center">Game Tonight</h1>
+    <h2 class="text-center">Ravens vs Steelers</h2>
+  </div>
+</div>
+
+<div class="card-center card w-50">
+  <div class="card-body">
+        <table style="width:100%">
+          <tr>
+           <th style="width:30%"><b>UPLOAD LINEUP FILE:</b></th>
+           <th style="width:70%">
+             <form>
+               <div class="custom-file">
+                 <input type="file" class="custom-file-input" id="customFile">
+                 <label style="text-align:left" class="custom-file-label" for="customFile">Choose File...</label>
+               </div>
+             </form>
+            </th>
+          </tr>
+        <table>
+  </div>
+</div>
+
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>

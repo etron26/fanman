@@ -1,0 +1,9 @@
+body {
+    min-width: 700px;
+}
+
+.card-center {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
