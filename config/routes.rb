@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'upload/new'
   get 'upload/create'
   get 'upload/destroy'
+  get 'upload/export'
   post 'upload/uploadFile'
   root 'application#index'
   devise_for :users

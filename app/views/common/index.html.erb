@@ -5,6 +5,7 @@
   </div>
 </div>
 
+<%= form_tag({:controller => 'upload', :action => 'uploadFile'}, :multipart => true) do %>
 <div class="card-center card w-50">
   <div class="card-body">
         <table style="width:100%">
@@ -13,8 +14,8 @@
            <th style="width:70%">
              <form>
                <div class="custom-file">
-                 <input type="file" class="custom-file-input" id="customFile">
-                 <label style="text-align:left" class="custom-file-label" for="customFile">Choose File...</label>
+                 <input type="file" class="custom-file-input" name="upload[datafile]" id="upload_datafile">
+                 <label for="upload_file" style="text-align:left" class="custom-file-label" for="customFile">Choose File...</label>
                </div>
              </form>
             </th>
@@ -23,15 +24,10 @@
   </div>
 </div>
 
-<%= form_tag({:controller => 'upload', :action => 'uploadFile'}, :multipart => true) do %>
-
-<p><label for="upload_file">Select File</label> : 
-
-<%= file_field 'upload', 'datafile' %></p>
-
-<%= submit_tag "Upload" %>
-
+<%= submit_tag "Upload", :style => 'display:none;', :id => 'upload-btn', :class => 'btn btn-primary' %>
 <% end %>
+
+<%= link_to('',{:controller => :upload, :action => :export, format: 'csv'}, id: "export-link" ) %>
 
 
 <script>
@@ -39,5 +35,12 @@
 $(".custom-file-input").on("change", function() {
   var fileName = $(this).val().split("\\").pop();
   $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  $('#upload-btn').click();
+  setTimeout(function() {
+    $('#export-link')[0].click();
+  },1000)
+  setTimeout(function() {
+    window.location.reload(true);
+  },2000)
 });
 </script>
