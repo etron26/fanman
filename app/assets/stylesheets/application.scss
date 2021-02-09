@@ -36,3 +36,15 @@ label.error:after {
   border-style: solid;
   border-color: #f8d7da transparent;
 }
+
+/* Custom CSS */
+
+body {
+    min-width: 700px;
+}
+
+.card-center {
+        margin: 0 auto !important;
+        float: none;
+        margin-bottom: 25px !important;
+}
