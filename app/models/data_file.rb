@@ -32,7 +32,7 @@ class DataFile < ActiveRecord::Base
         else
           @file = file.gsub(/\n|\r/,"").split(',')
           @excel = idx >= @e.count ? Array.new(@e[0].gsub("\n","").split("\t").count,"") : @e[idx].gsub("\n","").split("\t")
-          @merge = @file[0..@file.count - (@excel.count + 1)].concat @excel
+          @merge = @file[0..file.split(',').count - (@e[0].split("\t").count + 1)].concat @excel
           File.open("file_uploads/#{@current_user.first_name}-DK.csv", "a"){|f| f.write("#{@merge.join(',')}\n")}
           File.open("file_uploads/#{@current_user.first_name}-PICKS.csv", "a"){|f| f.write("#{@e[idx]}")}
         end
@@ -46,6 +46,6 @@ class DataFile < ActiveRecord::Base
       end
       File.delete(path)
       File.delete("file_uploads/PICKS.csv")
-      File.delete("file_uploads/UNIQS.csv")
+      #File.delete("file_uploads/UNIQS.csv")
    end
 end
